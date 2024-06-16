@@ -1,29 +1,19 @@
 ﻿@model IEnumerable<HomeWork2.Models.Movie>
 
-<h2>Top 10 Movies</h2>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Director</th>
-            <th>Genre</th>
-            <th>Year</th>
-            <th>Poster</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var movie in Model)
-        {
-            <tr>
+@foreach (var movie in Model)
+{
+    <div class="item">
+        <div class="posterUrl" style="background-image:url(@movie.PosterUrl");></div>
+        <div class="rating">@movie.Rating</div>
+        <div class="title">@movie.Title</div>
+        <div class="year">@movie.Year</div>
+    </div>
+    @*             <tr>
                 <td>@movie.Title</td>
                 <td>@movie.Director</td>
                 <td>@movie.Genre</td>
                 <td>@movie.Year</td>
                 <td><img src="@movie.PosterUrl" alt="@movie.Title" style="width:100px;height:auto;" /></td>
                 <td>@movie.Description</td>
-            </tr>
-        }
-    </tbody>
-</table>
+            </tr> *@
+}

@@ -10,6 +10,7 @@ namespace HomeWork2.Models
         public string Genre { get; set; }
         public int Year { get; set; }
         public string PosterUrl { get; set; }
+        public string Rating { get; set; }
         public string Description { get; set; }
     }
 }

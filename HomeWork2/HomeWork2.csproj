@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="wwwroot\background\background.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\images\FightClub.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
