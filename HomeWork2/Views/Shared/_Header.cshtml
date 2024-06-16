@@ -1,0 +1,11 @@
+﻿<header>
+    <h2>@ViewData["PageTitle"]</h2>
+    @if (ViewData["ShowAddButton"] != null && (bool)ViewData["ShowAddButton"])
+    {
+        <button class="add-button" role="button">Add New Movie</button>
+    }
+    else if (ViewData["ShowBackButton"] != null && (bool)ViewData["ShowBackButton"])
+    {
+        <button class="back-button" role="button" onclick="window.history.back()">Back to Title</button>
+    }
+</header>

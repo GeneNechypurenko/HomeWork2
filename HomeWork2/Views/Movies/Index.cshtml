@@ -1,19 +1,19 @@
 ﻿@model IEnumerable<HomeWork2.Models.Movie>
 
+@{
+    ViewData["Title"] = "Movie";
+    ViewData["PageTitle"] = "LIST OF TOP RATING MOVIES OF ALL TIMES";
+    ViewData["ShowAddButton"] = true;
+    ViewData["ShowBackButton"] = false;
+}
+
 @foreach (var movie in Model)
 {
-    <div class="item">
+    <div class="item" data-movie-id="@movie.Id">
         <div class="posterUrl" style="background-image:url(@movie.PosterUrl");></div>
         <div class="rating">@movie.Rating</div>
         <div class="title">@movie.Title</div>
         <div class="year">@movie.Year</div>
     </div>
-    @*             <tr>
-                <td>@movie.Title</td>
-                <td>@movie.Director</td>
-                <td>@movie.Genre</td>
-                <td>@movie.Year</td>
-                <td><img src="@movie.PosterUrl" alt="@movie.Title" style="width:100px;height:auto;" /></td>
-                <td>@movie.Description</td>
-            </tr> *@
 }
+<script src="~/js/movie.js"></script>

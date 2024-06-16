@@ -17,5 +17,12 @@ namespace HomeWork2.Controllers
         {
             return View(await _context.Movies.ToListAsync());
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var selectedItem = await _context.Movies.FirstOrDefaultAsync(i => i.Id == id);
+            if (selectedItem == null) { return NotFound(); }
+            return View(selectedItem);
+        }
     }
 }
