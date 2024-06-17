@@ -11,6 +11,7 @@
 
     <section class="form-box">
         <form asp-action="Add" method="post" enctype="multipart/form-data">
+
             <div class="form-group">
                 <label for="Title">Title</label>
                 <input type="text" class="form-control" id="Title" name="Title" required oninput="updatePreview()" />
@@ -31,7 +32,6 @@
                     <div id="image-view">
                         <img src="~/background/upload.png" />
                         <p>Drag and drop or click here<br />to upload image</p>
-                        <span>Upload any images from desktop</span>
                     </div>
                 </label>
             </div>

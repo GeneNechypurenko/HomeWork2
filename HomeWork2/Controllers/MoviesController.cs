@@ -9,13 +9,11 @@ namespace HomeWork2.Controllers
     {
         private readonly ApplicationContext _context;
         private IWebHostEnvironment _environment;
-        private string _path;
 
         public MoviesController(ApplicationContext context, IWebHostEnvironment environment)
         {
             _context = context;
             _environment = environment;
-            _path = _environment.WebRootPath + "/images/";
         }
 
         public async Task<IActionResult> Index()
@@ -40,20 +38,22 @@ namespace HomeWork2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(Movie movie, IFormFile poster)
         {
-            if (ModelState.IsValid && poster is not null && poster.Length > 0)
+            if (poster is not null && poster.Length > 0)
             {
-                using (var fs = new FileStream(_path + poster, FileMode.Create))
+                string path = "/images/" + poster.FileName;
+
+                using (var fs = new FileStream(_environment.WebRootPath + path, FileMode.Create))
                 {
                     await poster.CopyToAsync(fs);
                 };
+                movie.PosterUrl = path;
 
-                movie.PosterUrl = _path + poster.FileName;
-
-                _context.Add(movie);
+                await _context.AddAsync(movie);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(movie);
+            return View();
         }
     }
 }
