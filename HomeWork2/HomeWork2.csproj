@@ -19,6 +19,12 @@
     <Content Update="wwwroot\background\background.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\background\default-poster.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\background\upload.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\images\FightClub.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

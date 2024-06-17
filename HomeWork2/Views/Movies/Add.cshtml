@@ -13,59 +13,66 @@
         <form asp-action="Add" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="Title">Title</label>
-                <input type="text" class="form-control" id="Title" name="Title" required placeholder="Enter Movie Title"/>
+                <input type="text" class="form-control" id="Title" name="Title" required oninput="updatePreview()" />
             </div>
 
             <div class="form-group">
                 <label for="Rating">Rating</label>
-                <input type="text" class="form-control" id="Rating" name="Rating" required placeholder="IMDb: 0.0" />
+                <input type="number" step="0.1" class="form-control" id="Rating" name="Rating" min="0.0" max="9.9" required oninput="updatePreview()" />
             </div>
             <div class="form-group">
                 <label for="Genre">Genre</label>
-                <input type="text" class="form-control" id="Genre" name="Genre" required placeholder="genre"/>
+                <input type="text" class="form-control" id="Genre" name="Genre" required oninput="updatePreview()" />
             </div>
 
-@*             <div class="form-group">
-                <label asp-for="PosterFile" class="control-label"></label>
-                <input asp-for="PosterFile" class="form-control" type="file" />
-                <span asp-validation-for="PosterFile" class="text-danger"></span>
-            </div> *@
-            <div class="form-group">
-                <label asp-for="PosterUrl" class="control-label"></label>
-                <input asp-for="PosterUrl" class="form-control" required />
-                <span asp-validation-for="PosterUrl" class="text-danger"></span>
+            <div class="upload">
+                <label for="input-file" id="drop-area">
+                    <input type="file" id="input-file" name="poster" hidden required onchange="previewImage(event)" />
+                    <div id="image-view">
+                        <img src="~/background/upload.png" />
+                        <p>Drag and drop or click here<br />to upload image</p>
+                        <span>Upload any images from desktop</span>
+                    </div>
+                </label>
             </div>
 
             <div class="form-group">
                 <label for="Year">Year</label>
-                <input type="number" class="form-control" id="Year" name="Year" required />
+                <input type="number" class="form-control" id="Year" name="Year" min="1900" max="@(DateTime.Now.Year)" required oninput="updatePreview()" />
             </div>
             <div class="form-group">
                 <label for="Director">Director</label>
-                <input type="text" class="form-control" id="Director" name="Director" required />
+                <input type="text" class="form-control" id="Director" name="Director" required oninput="updatePreview()" />
             </div>
 
-            <div class="form-group">
+            <div class="description">
                 <label for="Description">Description</label>
-                <textarea class="form-control" id="Description" name="Description" required></textarea>
+                <textarea class="form-control" id="Description" name="Description" required oninput="updatePreview()"></textarea>
+            </div>
+
+            <div class="button-container">
+                <button type="submit">Accept</button>
+                <button type="button" id="clear-button">Clear</button>
             </div>
         </form>
     </section>
 
     <section class="preview-box">
-        <div class="preview-group">
-            <div class="preview-title">Enter Movie Title</div>
+        <div class="preview-title">
+            <h1 class="add-title">Your Movie Title</h1>
         </div>
         <div class="preview-group">
-            <div class="preview-rating">IMDb: 0.0</div>
-        </div>
-        <div class="preview-group">
+            <div class="preview-rating">IMDb: 9.9</div>
             <div class="preview-genre">genre</div>
+            <img class="preview-posterUrl" id="output-file" src="~/background/default-poster.jpg" />
+            <div class="preview-year">@(DateTime.Now.Year)</div>
+            <div class="preview-director">Movie Director</div>
+        </div>
+        <div class="preview-description">
+            <div class="add-description">Your movie description is here...</div>
         </div>
     </section>
+
 </section>
 
-<div class="button-container">
-    <button>Edit</button>
-    <button>Delete</button>
-</div>
+<script src="~/js/add.js"></script>
