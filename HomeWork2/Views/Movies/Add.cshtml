@@ -1,0 +1,71 @@
+﻿@model HomeWork2.Models.Movie
+
+@{
+    ViewData["Title"] = "Add New Movie";
+    ViewData["PageTitle"] = "Add New Movie";
+    ViewData["ShowAddButton"] = false;
+    ViewData["ShowBackButton"] = true;
+}
+
+<section class="edit-container">
+
+    <section class="form-box">
+        <form asp-action="Add" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="Title">Title</label>
+                <input type="text" class="form-control" id="Title" name="Title" required placeholder="Enter Movie Title"/>
+            </div>
+
+            <div class="form-group">
+                <label for="Rating">Rating</label>
+                <input type="text" class="form-control" id="Rating" name="Rating" required placeholder="IMDb: 0.0" />
+            </div>
+            <div class="form-group">
+                <label for="Genre">Genre</label>
+                <input type="text" class="form-control" id="Genre" name="Genre" required placeholder="genre"/>
+            </div>
+
+@*             <div class="form-group">
+                <label asp-for="PosterFile" class="control-label"></label>
+                <input asp-for="PosterFile" class="form-control" type="file" />
+                <span asp-validation-for="PosterFile" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="PosterUrl" class="control-label"></label>
+                <input asp-for="PosterUrl" class="form-control" required />
+                <span asp-validation-for="PosterUrl" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Year">Year</label>
+                <input type="number" class="form-control" id="Year" name="Year" required />
+            </div>
+            <div class="form-group">
+                <label for="Director">Director</label>
+                <input type="text" class="form-control" id="Director" name="Director" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Description">Description</label>
+                <textarea class="form-control" id="Description" name="Description" required></textarea>
+            </div>
+        </form>
+    </section>
+
+    <section class="preview-box">
+        <div class="preview-group">
+            <div class="preview-title">Enter Movie Title</div>
+        </div>
+        <div class="preview-group">
+            <div class="preview-rating">IMDb: 0.0</div>
+        </div>
+        <div class="preview-group">
+            <div class="preview-genre">genre</div>
+        </div>
+    </section>
+</section>
+
+<div class="button-container">
+    <button>Edit</button>
+    <button>Delete</button>
+</div>

@@ -2,7 +2,7 @@
     <h2>@ViewData["PageTitle"]</h2>
     @if (ViewData["ShowAddButton"] != null && (bool)ViewData["ShowAddButton"])
     {
-        <button class="add-button" role="button">Add New Movie</button>
+        <button class="add-button" role="button" onclick="location.href='@Url.Action("Add", "Movies")'">Add New Movie</button>
     }
     else if (ViewData["ShowBackButton"] != null && (bool)ViewData["ShowBackButton"])
     {

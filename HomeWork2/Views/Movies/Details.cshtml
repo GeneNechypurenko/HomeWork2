@@ -2,17 +2,18 @@
 
 @{
     ViewData["Title"] = "Details";
-    ViewData["PageTitle"] = "MOVIE DETAILS";
+    ViewData["PageTitle"] = @Model.Title;
     ViewData["ShowAddButton"] = false;
     ViewData["ShowBackButton"] = true;
 }
 
 <section class="box">
     <div class="header-box">
-        <div class="details-title">@Model.Title</div>
-        <img class="details-posterUrl" src="@Model.PosterUrl" alt="Movie Poster">
         <div class="details-rating">@Model.Rating</div>
+        <div class="details-genre">@Model.Genre</div>
+        <img class="details-posterUrl" src="@Model.PosterUrl" alt="Movie Poster">
         <div class="details-year">@Model.Year</div>
+        <div class="details-director">@Model.Director</div>
     </div>
     <div class="details-description">@Model.Description</div>
     <div class="button-container">
