@@ -63,5 +63,7 @@ namespace HomeWork2.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> Edit(int id) => View(await _context.Movies.FindAsync(id));
     }
 }

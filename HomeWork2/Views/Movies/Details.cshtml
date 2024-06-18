@@ -11,13 +11,13 @@
     <div class="header-box">
         <div class="details-rating">@Model.Rating</div>
         <div class="details-genre">@Model.Genre</div>
-        <img class="details-posterUrl" src="@Model.PosterUrl" alt="Movie Poster">
+        <img class="details-posterUrl" src="@Model.PosterUrl">
         <div class="details-year">@Model.Year</div>
         <div class="details-director">@Model.Director</div>
     </div>
     <div class="details-description">@Model.Description</div>
     <div class="button-container">
-        <button>Edit</button>
+        <button class="edit-button" data-movie-id="@Model.Id">Edit</button>
         <button class="delete-button" data-movie-id="@Model.Id">Delete</button>
     </div>
 </section>
