@@ -2,6 +2,7 @@
 using HomeWork2.Models.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace HomeWork2.Controllers
 {
@@ -16,10 +17,7 @@ namespace HomeWork2.Controllers
             _environment = environment;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Movies.ToListAsync());
-        }
+        public async Task<IActionResult> Index() => View(await _context.Movies.ToListAsync());
 
         public async Task<IActionResult> Details(int id)
         {
@@ -28,10 +26,7 @@ namespace HomeWork2.Controllers
             return View(selectedItem);
         }
 
-        public IActionResult Add()
-        {
-            return View();
-        }
+        public IActionResult Add() => View();
 
         [HttpPost]
         [RequestSizeLimit(1000000000)]
@@ -54,6 +49,19 @@ namespace HomeWork2.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View();
+        }
+
+        public async Task<IActionResult> Delete(int id) => View(await _context.Movies.FindAsync(id));
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var movie = await _context.Movies.FindAsync(id);
+
+            _context.Movies.Remove(movie);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Details";
-    ViewData["PageTitle"] = @Model.Title;
+    ViewData["PageTitle"] = "DETAILS FOR: " + @Model.Title;
     ViewData["ShowAddButton"] = false;
     ViewData["ShowBackButton"] = true;
 }
@@ -18,6 +18,8 @@
     <div class="details-description">@Model.Description</div>
     <div class="button-container">
         <button>Edit</button>
-        <button>Delete</button>
+        <button class="delete-button" data-movie-id="@Model.Id">Delete</button>
     </div>
 </section>
+
+<script src="~/js/details.js"></script>

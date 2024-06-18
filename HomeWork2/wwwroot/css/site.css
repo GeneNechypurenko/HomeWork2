@@ -91,7 +91,9 @@ h2 {
 .posterUrl {
     height: 250px;
     width: 150px;
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .title, .year, .rating {
@@ -205,7 +207,9 @@ button {
 .details-posterUrl {
     height: 500px;
     width: 50%;
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     border: 0.1px solid #252525;
     border-radius: 8px;
     box-shadow: 0 0 100px 1px #ffffff;
@@ -404,7 +408,9 @@ h1 {
 .preview-posterUrl {
     height: 500px;
     width: 100%;
-    background-size: cover;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     border: 0.1px solid #252525;
     border-radius: 8px;
 }
@@ -414,4 +420,60 @@ h1 {
     text-align: center;
     overflow-y: auto;
     color: #fff;
+}
+
+.delete-box {
+    height: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 8px;
+    border: 0.1px solid #252525;
+    padding: 10px;
+    margin: 0;
+}
+
+.delete-form-box {
+    height: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.delete-form {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px;
+}
+
+.notification {
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    border: 0.1px solid #252525;
+    border-radius: 8px;
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: orangered;
+}
+
+.delete-posterUrl {
+    height: 400px;
+    width: 280px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 0.1px solid #252525;
+    border-radius: 8px;
 }
