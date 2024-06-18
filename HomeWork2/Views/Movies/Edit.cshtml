@@ -10,25 +10,24 @@
 <section class="edit-container">
 
     <section class="form-box">
-        <form asp-action="Add" method="post" enctype="multipart/form-data">
-
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="Title">Title</label>
-                <input type="text" class="form-control" id="Title" name="Title" required oninput="updatePreview()" />
+                <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" required oninput="updatePreview()" />
             </div>
 
             <div class="form-group">
                 <label for="Rating">Rating</label>
-                <input type="number" step="0.1" class="form-control" id="Rating" name="Rating" min="0.0" max="9.9" required oninput="updatePreview()" />
+                <input type="number" step="0.1" class="form-control" id="Rating" name="Rating" value="@Model.Rating" min="0.0" max="9.9" required oninput="updatePreview()" />
             </div>
             <div class="form-group">
                 <label for="Genre">Genre</label>
-                <input type="text" class="form-control" id="Genre" name="Genre" required oninput="updatePreview()" />
+                <input type="text" class="form-control" id="Genre" name="Genre" value="@Model.Genre" required oninput="updatePreview()" />
             </div>
 
             <div class="upload">
                 <label for="input-file" id="drop-area">
-                    <input type="file" id="input-file" name="poster" hidden required onchange="previewImage(event)" />
+                    <input type="file" id="input-file" name="poster" hidden onchange="previewImage(event)" />
                     <div id="image-view">
                         <img src="~/background/upload.png" />
                         <p>Drag and drop or click here<br />to upload image</p>
@@ -38,16 +37,16 @@
 
             <div class="form-group">
                 <label for="Year">Year</label>
-                <input type="number" class="form-control" id="Year" name="Year" min="1900" max="@(DateTime.Now.Year)" required oninput="updatePreview()" />
+                <input type="number" class="form-control" id="Year" name="Year" value="@Model.Year" min="1900" max="@(DateTime.Now.Year)" required oninput="updatePreview()" />
             </div>
             <div class="form-group">
                 <label for="Director">Director</label>
-                <input type="text" class="form-control" id="Director" name="Director" required oninput="updatePreview()" />
+                <input type="text" class="form-control" id="Director" name="Director" value="@Model.Director" required oninput="updatePreview()" />
             </div>
 
             <div class="description">
                 <label for="Description">Description</label>
-                <textarea class="form-control" id="Description" name="Description" required oninput="updatePreview()"></textarea>
+                <textarea class="form-control" id="Description" name="Description" required oninput="updatePreview()">@Model.Description</textarea>
             </div>
 
             <div class="button-container">
@@ -75,4 +74,4 @@
 
 </section>
 
-<script src="~/js/add.js"></script>
+<script src="~/js/edit.js"></script>

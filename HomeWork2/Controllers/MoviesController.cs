@@ -65,5 +65,29 @@ namespace HomeWork2.Controllers
         }
 
         public async Task<IActionResult> Edit(int id) => View(await _context.Movies.FindAsync(id));
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Movie movie, IFormFile poster)
+        {
+
+            if (poster is not null && poster.Length > 0)
+            {
+                string path = "/images/" + poster.FileName;
+
+                using (var fs = new FileStream(_environment.WebRootPath + path, FileMode.Create))
+                {
+                    await poster.CopyToAsync(fs);
+                }
+                movie.PosterUrl = path;
+
+                _context.Update(movie);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(movie);
+        }
     }
 }
