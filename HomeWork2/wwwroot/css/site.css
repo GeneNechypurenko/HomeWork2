@@ -82,7 +82,7 @@ h2 {
     flex-direction: column;
     overflow: hidden;
     color: #ccc;
-    background: linear-gradient(45deg, #111 300px, #ccc);
+    background: linear-gradient(45deg, #111 200px, #ccc);
     transition: box-shadow 2s;
     cursor: pointer;
     gap: 5px;
