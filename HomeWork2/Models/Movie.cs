@@ -15,14 +15,14 @@ namespace HomeWork2.Models
         [Required(ErrorMessage = "Genre is required.")]
         public string Genre { get; set; }
 
-        [Required(ErrorMessage = $"Year is required")]
+        [Required(ErrorMessage = "Year is required")]
+        [Range(1900, 2100, ErrorMessage = "Year must be between 1900 and 2100.")]
         public int Year { get; set; }
 
-        [Required(ErrorMessage = "Poster is required.")]
-        public string PosterUrl { get; set; }
+        public string? PosterUrl { get; set; }
 
         [Required(ErrorMessage = "Rating is required.")]
-        //[RegularExpression(@"\d+(\.\d{1})?", ErrorMessage = "Invalid rating format.")]
+        [Range(0.0, 10.0, ErrorMessage = "Rating must be between 0.0 and 10.0.")]
         public string Rating { get; set; }
 
         [Required(ErrorMessage = "Description is required.")]

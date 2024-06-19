@@ -33,8 +33,10 @@ namespace HomeWork2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(Movie movie, IFormFile poster)
         {
-            //if (ModelState.IsValid)
-            //{
+            ModelState.Remove("poster");
+
+            if (ModelState.IsValid)
+            {
                 if (poster is not null && poster.Length > 0)
                 {
                     string path = "/images/" + poster.FileName;
@@ -42,15 +44,17 @@ namespace HomeWork2.Controllers
                     using (var fs = new FileStream(_environment.WebRootPath + path, FileMode.Create))
                     {
                         await poster.CopyToAsync(fs);
-                    };
+                    }
                     movie.PosterUrl = path;
-
-                    await _context.AddAsync(movie);
-                    await _context.SaveChangesAsync();
-
-                    return RedirectToAction(nameof(Index));
                 }
-            //}
+                else
+                {
+                    movie.PosterUrl = "/background/default-poster.jpg";
+                }
+                await _context.AddAsync(movie);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
             return View(movie);
         }
 

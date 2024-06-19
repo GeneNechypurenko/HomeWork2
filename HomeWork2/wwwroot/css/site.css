@@ -477,3 +477,8 @@ h1 {
     border: 0.1px solid #252525;
     border-radius: 8px;
 }
+
+.text-danger {
+    color: red;
+    font-weight: bold;
+}

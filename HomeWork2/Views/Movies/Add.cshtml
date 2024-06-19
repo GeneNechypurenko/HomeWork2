@@ -8,27 +8,28 @@
 }
 
 <section class="edit-container">
-
     <section class="form-box">
         <form asp-action="Add" method="post" enctype="multipart/form-data">
-
             <div class="form-group">
-                <label for="Title">Title</label>
-                <input type="text" class="form-control" id="Title" name="Title" required oninput="updatePreview()" />
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" required oninput="updatePreview()" />
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label for="Rating">Rating</label>
-                <input type="number" step="0.1" class="form-control" id="Rating" name="Rating" min="0.0" max="9.9" required oninput="updatePreview()" />
+                <label asp-for="Rating"></label>
+                <input asp-for="Rating" type="number" step="0.1" class="form-control" min="0.0" max="9.9" required oninput="updatePreview()" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="Genre">Genre</label>
-                <input type="text" class="form-control" id="Genre" name="Genre" required oninput="updatePreview()" />
+                <label asp-for="Genre"></label>
+                <input asp-for="Genre" class="form-control" required oninput="updatePreview()" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
             </div>
 
             <div class="upload">
                 <label for="input-file" id="drop-area">
-                    <input type="file" id="input-file" name="poster" hidden required onchange="previewImage(event)" />
+                    <input type="file" id="input-file" name="poster" hidden onchange="previewImage(event)" />
                     <div id="image-view">
                         <img src="~/background/upload.png" />
                         <p>Drag and drop or click here<br />to upload image</p>
@@ -37,17 +38,20 @@
             </div>
 
             <div class="form-group">
-                <label for="Year">Year</label>
-                <input type="number" class="form-control" id="Year" name="Year" min="1900" max="@(DateTime.Now.Year)" required oninput="updatePreview()" />
+                <label asp-for="Year"></label>
+                <input asp-for="Year" type="number" class="form-control" min="1900" max="@(DateTime.Now.Year)" required oninput="updatePreview()" />
+                <span asp-validation-for="Year" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="Director">Director</label>
-                <input type="text" class="form-control" id="Director" name="Director" required oninput="updatePreview()" />
+                <label asp-for="Director"></label>
+                <input asp-for="Director" class="form-control" required oninput="updatePreview()" />
+                <span asp-validation-for="Director" class="text-danger"></span>
             </div>
 
             <div class="description">
-                <label for="Description">Description</label>
-                <textarea class="form-control" id="Description" name="Description" required oninput="updatePreview()"></textarea>
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control" required oninput="updatePreview()"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
 
             <div class="button-container">
@@ -72,7 +76,10 @@
             <div class="add-description">Your movie description is here...</div>
         </div>
     </section>
-
 </section>
 
 <script src="~/js/add.js"></script>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
