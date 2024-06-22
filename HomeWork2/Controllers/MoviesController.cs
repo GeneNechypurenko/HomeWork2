@@ -2,14 +2,13 @@
 using HomeWork2.Models.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata.Ecma335;
 
 namespace HomeWork2.Controllers
 {
     public class MoviesController : Controller
     {
         private readonly ApplicationContext _context;
-        private IWebHostEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
 
         public MoviesController(ApplicationContext context, IWebHostEnvironment environment)
         {
@@ -77,23 +76,28 @@ namespace HomeWork2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Movie movie, IFormFile poster)
         {
+            ModelState.Remove("poster");
 
-            if (poster is not null && poster.Length > 0)
+            if (ModelState.IsValid)
             {
-                string path = "/images/" + poster.FileName;
-
-                using (var fs = new FileStream(_environment.WebRootPath + path, FileMode.Create))
+                if (poster is not null && poster.Length > 0)
                 {
-                    await poster.CopyToAsync(fs);
-                }
-                movie.PosterUrl = path;
+                    string path = "/images/" + poster.FileName;
 
+                    using (var fs = new FileStream(_environment.WebRootPath + path, FileMode.Create))
+                    {
+                        await poster.CopyToAsync(fs);
+                    }
+                    movie.PosterUrl = path;
+                }
+                else
+                {
+                    movie.PosterUrl = _context.Movies.Where(m => m.Id == id).Select(m => m.PosterUrl).FirstOrDefault();
+                }
                 _context.Update(movie);
                 await _context.SaveChangesAsync();
-
                 return RedirectToAction(nameof(Index));
             }
-
             return View(movie);
         }
     }

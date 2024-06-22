@@ -8,21 +8,24 @@
 }
 
 <section class="edit-container">
-
     <section class="form-box">
         <form asp-action="Edit" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="Title">Title</label>
-                <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" required oninput="updatePreview()" />
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" required oninput="updatePreview()" />
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label for="Rating">Rating</label>
-                <input type="number" step="0.1" class="form-control" id="Rating" name="Rating" value="@Model.Rating" min="0.0" max="9.9" required oninput="updatePreview()" />
+                <label asp-for="Rating"></label>
+                <input asp-for="Rating" type="number" class="form-control" step="0.1" required oninput="updatePreview()" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label for="Genre">Genre</label>
-                <input type="text" class="form-control" id="Genre" name="Genre" value="@Model.Genre" required oninput="updatePreview()" />
+                <label asp-for="Genre"></label>
+                <input asp-for="Genre" class="form-control" required oninput="updatePreview()" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
             </div>
 
             <div class="upload">
@@ -36,17 +39,21 @@
             </div>
 
             <div class="form-group">
-                <label for="Year">Year</label>
-                <input type="number" class="form-control" id="Year" name="Year" value="@Model.Year" min="1900" max="@(DateTime.Now.Year)" required oninput="updatePreview()" />
+                <label asp-for="Year"></label>
+                <input asp-for="Year" type="number" class="form-control" required oninput="updatePreview()" />
+                <span asp-validation-for="Year" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label for="Director">Director</label>
-                <input type="text" class="form-control" id="Director" name="Director" value="@Model.Director" required oninput="updatePreview()" />
+                <label asp-for="Director"></label>
+                <input asp-for="Director" class="form-control" required oninput="updatePreview()" />
+                <span asp-validation-for="Director" class="text-danger"></span>
             </div>
 
             <div class="description">
-                <label for="Description">Description</label>
-                <textarea class="form-control" id="Description" name="Description" required oninput="updatePreview()">@Model.Description</textarea>
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control" required oninput="updatePreview()"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
 
             <div class="button-container">
@@ -71,7 +78,6 @@
             <div class="add-description">@Model.Description</div>
         </div>
     </section>
-
 </section>
 
 <script src="~/js/edit.js"></script>

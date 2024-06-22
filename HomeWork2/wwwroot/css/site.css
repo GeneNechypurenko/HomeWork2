@@ -331,11 +331,11 @@ form {
 }
 
 label {
-    width: 30%;
+    width: 20%;
 }
 
 .form-control {
-    width: 70%;
+    width: 60%;
 }
 
 .upload {
@@ -479,6 +479,8 @@ h1 {
 }
 
 .text-danger {
+    width: 20%;
     color: red;
     font-weight: bold;
+    text-align: center;
 }
