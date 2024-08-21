@@ -1,15 +1,15 @@
-﻿
-const originalValues = {
-    title: document.getElementById('Title').value,
-    rating: document.getElementById('Rating').value,
-    genre: document.getElementById('Genre').value,
-    year: document.getElementById('Year').value,
-    director: document.getElementById('Director').value,
-    description: document.getElementById('Description').value,
-    posterUrl: document.getElementById('output-file').src
-};
+﻿function updateOriginalValues() {
+    originalValues.title = document.getElementById('Title').value;
+    originalValues.rating = document.getElementById('Rating').value;
+    originalValues.genre = document.getElementById('Genre').value;
+    originalValues.year = document.getElementById('Year').value;
+    originalValues.director = document.getElementById('Director').value;
+    originalValues.description = document.getElementById('Description').value;
+    originalValues.posterUrl = document.getElementById('output-file').src;
+}
 
 function updatePreview() {
+    updateOriginalValues();
     document.querySelector('.preview-title h1').textContent = document.getElementById('Title').value;
     document.querySelector('.preview-rating').textContent = `IMDb: ${document.getElementById('Rating').value || document.getElementById('Rating').value}`;
     document.querySelector('.preview-genre').textContent = document.getElementById('Genre').value;
@@ -23,6 +23,7 @@ function previewImage(event) {
     reader.onload = function () {
         const output = document.getElementById('output-file');
         output.src = reader.result;
+        updateOriginalValues();
     };
     reader.readAsDataURL(event.target.files[0]);
 }
